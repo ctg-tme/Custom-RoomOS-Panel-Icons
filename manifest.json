@@ -2,6 +2,12 @@
   "schemaVersion": 1,
   "icons": [
     {
+      "name": "Bar Chart",
+      "slug": "bar-chart",
+      "svg": "icons/bar-chart/bar-chart.svg",
+      "png": "icons/bar-chart/bar-chart-512.png"
+    },
+    {
       "name": "Camera Off",
       "slug": "camera-off",
       "svg": "icons/camera-off/camera-off.svg",
@@ -72,6 +78,12 @@
       "slug": "office-tools",
       "svg": "icons/office-tools/office-tools.svg",
       "png": "icons/office-tools/office-tools-512.png"
+    },
+    {
+      "name": "Pie Chart",
+      "slug": "pie-chart",
+      "svg": "icons/pie-chart/pie-chart.svg",
+      "png": "icons/pie-chart/pie-chart-512.png"
     },
     {
       "name": "Presenter Tracking Automation",
