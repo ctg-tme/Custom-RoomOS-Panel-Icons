@@ -6,12 +6,12 @@ This repository contains custom panel icon assets for Cisco RoomOS. The icons we
 
 The GitHub Pages gallery loads [`manifest.json`](manifest.json) in the browser and builds a searchable preview of the icon collection.
 
-**GitHub Pages gallery:** [https://OWNER.github.io/REPOSITORY/](https://OWNER.github.io/REPOSITORY/)  
-Replace `OWNER` and `REPOSITORY` with this repository's GitHub owner and repository name after Pages is enabled. The included [Pages workflow](.github/workflows/pages.yml) deploys the site when changes are pushed to `main`.
+**GitHub Pages gallery:** [https://ctg-tme.github.io/Custom-RoomOS-Panel-Icons/](https://ctg-tme.github.io/Custom-RoomOS-Panel-Icons/)
+The included [Pages workflow](.github/workflows/pages.yml) deploys the site when changes are pushed to `main`.
 
 ## Fetch icons
 
-Load `manifest.json` from the GitHub Pages site and find the icon by its name or dashed slug. Use its `svg` or `png512` path to request the asset from the same site. The gallery's “Fetch an icon” section lists all icon names and slugs and includes RoomOS macro helpers for fetching the manifest and applying an icon to a panel. The helpers are also available in [`macro-functions.js`](macro-functions.js); set `ICON_MANIFEST_URL` to the published manifest URL before using them. RoomOS's HTTP client must be enabled and permitted to reach the site.
+Load `manifest.json` from the GitHub Pages site and find the icon by its name or dashed slug. Use its `svg` or `png` path to request the asset from the same site. The gallery's “Fetch an icon” section includes shell `curl` examples and RoomOS macro helpers for fetching the manifest and applying an icon to a panel. The helpers are also available in [`macro-functions.js`](macro-functions.js); the published manifest URL is embedded in `tmeRoomOSCustomIcons.list()`. If you fork the repository, replace that URL with your own Pages manifest URL. RoomOS's HTTP client must be enabled and permitted to reach the site.
 
 ## License and copyright
 

@@ -3,7 +3,7 @@ const tmeRoomOSCustomIcons = (() => {
   let manifestDirectory = '';
 
   async function list() {
-    const manifestUrl = 'https://OWNER.github.io/REPOSITORY/manifest.json';
+    const manifestUrl = 'https://ctg-tme.github.io/Custom-RoomOS-Panel-Icons/manifest.json';
     manifestDirectory = manifestUrl.slice(0, manifestUrl.lastIndexOf('/') + 1);
 
     const response = await xapi.Command.HttpClient.Get({

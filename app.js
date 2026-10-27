@@ -52,6 +52,64 @@ function getGitHubRepository() {
   };
 }
 
+function renderCurlExamples(rawBase) {
+  const lines = [
+    "# Fetch the manifest",
+    "curl \\",
+    "  -L --fail --show-error \\",
+    `  '${rawBase}manifest.json' \\`,
+    "  -o manifest.json",
+    "",
+    "# Replace this example path with an svg or png path from the manifest",
+    "curl \\",
+    "  -L --fail --show-error \\",
+    `  '${rawBase}icons/camera-off/camera-off.svg' \\`,
+    "  -o camera-off.svg",
+  ];
+
+  curlExamples.replaceChildren();
+  for (const [index, line] of lines.entries()) {
+    if (line.startsWith("#")) {
+      const comment = makeElement("span", "syntax-comment", line);
+      curlExamples.append(comment);
+    } else {
+      const tokens = line.match(/'[^']*'|--?[a-zA-Z-]+|[^\s]+|\s+/g) ?? [];
+      for (const token of tokens) {
+        if (/^curl$/.test(token)) {
+          curlExamples.append(makeElement("span", "syntax-command", token));
+        } else if (/^--?/.test(token)) {
+          curlExamples.append(makeElement("span", "syntax-option", token));
+        } else if (/^'.*'$/.test(token)) {
+          curlExamples.append(makeElement("span", "syntax-string", token));
+        } else {
+          curlExamples.append(document.createTextNode(token));
+        }
+      }
+    }
+    if (index < lines.length - 1) curlExamples.append(document.createTextNode("\n"));
+  }
+}
+
+function renderMacroSource(source) {
+  const tokenPattern = /\/\/[^\n]*|`(?:\\.|[^`])*`|'(?:\\.|[^'\\])*'|"(?:\\.|[^"\\])*"|\b(?:async|await|catch|const|else|function|if|new|return|throw|try)\b|\b(?:xapi|JSON|Error|Number|Promise)\b|\b\d+\b/g;
+  const tokenClass = (token) => {
+    if (token.startsWith("//")) return "syntax-js-comment";
+    if (/^[`'"]/.test(token)) return "syntax-js-string";
+    if (/^(async|await|catch|const|else|function|if|new|return|throw|try)$/.test(token)) return "syntax-js-keyword";
+    if (/^(xapi|JSON|Error|Number|Promise)$/.test(token)) return "syntax-js-api";
+    return "syntax-js-number";
+  };
+
+  macroCode.replaceChildren();
+  let lastIndex = 0;
+  for (const match of source.matchAll(tokenPattern)) {
+    if (match.index > lastIndex) macroCode.append(document.createTextNode(source.slice(lastIndex, match.index)));
+    macroCode.append(makeElement("span", tokenClass(match[0]), match[0]));
+    lastIndex = match.index + match[0].length;
+  }
+  if (lastIndex < source.length) macroCode.append(document.createTextNode(source.slice(lastIndex)));
+}
+
 function render() {
   const query = search.value.trim().toLowerCase();
   const filtered = icons.filter((icon) => `${icon.name} ${icon.slug}`.toLowerCase().includes(query));
@@ -64,12 +122,13 @@ function render() {
     const card = makeElement("article", "icon-card");
     const preview = makeElement("div", "icon-preview");
     const image = makeElement("img");
-    image.src = new URL(icon.png512, siteBase).href;
+    image.src = new URL(icon.png, siteBase).href;
     image.alt = `${icon.name} icon`;
     image.loading = "lazy";
     preview.append(image);
     const content = makeElement("div", "icon-content");
     content.append(makeElement("h3", "", icon.name));
+    content.append(makeElement("code", "icon-slug", icon.slug));
     card.append(preview, content);
     iconGrid.append(card);
   }
@@ -96,7 +155,6 @@ fetch(new URL("manifest.json", siteBase))
     if (!manifest || !Array.isArray(manifest.icons)) throw new Error("Manifest must contain an icons array");
     icons = manifest.icons;
     count.textContent = `${icons.length} icons`;
-    renderIconList();
     render();
   })
   .catch((error) => {
@@ -113,17 +171,11 @@ Promise.all([
 ])
   .then(([source]) => {
     const repository = getGitHubRepository();
-    const manifestUrl = repository?.manifestUrl ?? "https://OWNER.github.io/REPOSITORY/manifest.json";
-    const rawBase = repository?.rawBase ?? "https://raw.githubusercontent.com/OWNER/REPOSITORY/main/";
-    macroSource = source.replace("https://OWNER.github.io/REPOSITORY/manifest.json", manifestUrl);
-    macroCode.textContent = macroSource;
-    curlExamples.textContent = [
-      "# Fetch the manifest",
-      `curl -L --fail --show-error '${rawBase}manifest.json' -o manifest.json`,
-      "",
-      "# Fetch an icon using its svg or png512 path from the manifest",
-      `curl -L --fail --show-error '${rawBase}icons/camera-off/camera-off.svg' -o camera-off.svg`,
-    ].join("\\n");
+    const manifestUrl = repository?.manifestUrl ?? "https://ctg-tme.github.io/Custom-RoomOS-Panel-Icons/manifest.json";
+    const rawBase = repository?.rawBase ?? "https://raw.githubusercontent.com/ctg-tme/Custom-RoomOS-Panel-Icons/main/";
+    macroSource = source.replace("https://ctg-tme.github.io/Custom-RoomOS-Panel-Icons/manifest.json", manifestUrl);
+    renderMacroSource(macroSource);
+    renderCurlExamples(rawBase);
     copyMacro.disabled = false;
   })
   .catch((error) => {

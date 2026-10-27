@@ -5,133 +5,139 @@
       "name": "Camera Off",
       "slug": "camera-off",
       "svg": "icons/camera-off/camera-off.svg",
-      "png512": "icons/camera-off/camera-off-512.png"
+      "png": "icons/camera-off/camera-off-512.png"
     },
     {
       "name": "Code Web",
       "slug": "code-web",
       "svg": "icons/code-web/code-web.svg",
-      "png512": "icons/code-web/code-web-512.png"
+      "png": "icons/code-web/code-web-512.png"
+    },
+    {
+      "name": "Companion",
+      "slug": "companion",
+      "svg": "icons/companion/companion.svg",
+      "png": "icons/companion/companion-512.png"
     },
     {
       "name": "Divisible Room Combining",
       "slug": "divisible-room-combining",
       "svg": "icons/divisible-room-combining/divisible-room-combining.svg",
-      "png512": "icons/divisible-room-combining/divisible-room-combining-512.png"
+      "png": "icons/divisible-room-combining/divisible-room-combining-512.png"
     },
     {
       "name": "Divisible Room Dividing",
       "slug": "divisible-room-dividing",
       "svg": "icons/divisible-room-dividing/divisible-room-dividing.svg",
-      "png512": "icons/divisible-room-dividing/divisible-room-dividing-512.png"
+      "png": "icons/divisible-room-dividing/divisible-room-dividing-512.png"
     },
     {
       "name": "Divisible Room Is Combined",
       "slug": "divisible-room-is-combined",
       "svg": "icons/divisible-room-is-combined/divisible-room-is-combined.svg",
-      "png512": "icons/divisible-room-is-combined/divisible-room-is-combined-512.png"
+      "png": "icons/divisible-room-is-combined/divisible-room-is-combined-512.png"
     },
     {
       "name": "Divisible Room Is Divided",
       "slug": "divisible-room-is-divided",
       "svg": "icons/divisible-room-is-divided/divisible-room-is-divided.svg",
-      "png512": "icons/divisible-room-is-divided/divisible-room-is-divided-512.png"
+      "png": "icons/divisible-room-is-divided/divisible-room-is-divided-512.png"
     },
     {
       "name": "Frontend",
       "slug": "frontend",
       "svg": "icons/frontend/frontend.svg",
-      "png512": "icons/frontend/frontend-512.png"
+      "png": "icons/frontend/frontend-512.png"
     },
     {
       "name": "Language",
       "slug": "language",
       "svg": "icons/language/language.svg",
-      "png512": "icons/language/language-512.png"
+      "png": "icons/language/language-512.png"
     },
     {
       "name": "Logic Isolation",
       "slug": "logic-isolation",
       "svg": "icons/logic-isolation/logic-isolation.svg",
-      "png512": "icons/logic-isolation/logic-isolation-512.png"
+      "png": "icons/logic-isolation/logic-isolation-512.png"
     },
     {
       "name": "Logic Isolation Tunnel",
       "slug": "logic-isolation-tunnel",
       "svg": "icons/logic-isolation-tunnel/logic-isolation-tunnel.svg",
-      "png512": "icons/logic-isolation-tunnel/logic-isolation-tunnel-512.png"
+      "png": "icons/logic-isolation-tunnel/logic-isolation-tunnel-512.png"
     },
     {
       "name": "Office Tools",
       "slug": "office-tools",
       "svg": "icons/office-tools/office-tools.svg",
-      "png512": "icons/office-tools/office-tools-512.png"
+      "png": "icons/office-tools/office-tools-512.png"
     },
     {
       "name": "Presenter Tracking Automation",
       "slug": "presenter-tracking-automation",
       "svg": "icons/presenter-tracking-automation/presenter-tracking-automation.svg",
-      "png512": "icons/presenter-tracking-automation/presenter-tracking-automation-512.png"
+      "png": "icons/presenter-tracking-automation/presenter-tracking-automation-512.png"
     },
     {
       "name": "Presenter Tracking Automation Green",
       "slug": "presenter-tracking-automation-green",
       "svg": "icons/presenter-tracking-automation-green/presenter-tracking-automation-green.svg",
-      "png512": "icons/presenter-tracking-automation-green/presenter-tracking-automation-green-512.png"
+      "png": "icons/presenter-tracking-automation-green/presenter-tracking-automation-green-512.png"
     },
     {
       "name": "Presenter Tracking Automation Red",
       "slug": "presenter-tracking-automation-red",
       "svg": "icons/presenter-tracking-automation-red/presenter-tracking-automation-red.svg",
-      "png512": "icons/presenter-tracking-automation-red/presenter-tracking-automation-red-512.png"
+      "png": "icons/presenter-tracking-automation-red/presenter-tracking-automation-red-512.png"
     },
     {
       "name": "Routing",
       "slug": "routing",
       "svg": "icons/routing/routing.svg",
-      "png512": "icons/routing/routing-512.png"
+      "png": "icons/routing/routing-512.png"
     },
     {
       "name": "Stack",
       "slug": "stack",
       "svg": "icons/stack/stack.svg",
-      "png512": "icons/stack/stack-512.png"
+      "png": "icons/stack/stack-512.png"
     },
     {
       "name": "TME Team Icon",
       "slug": "tme-team-icon",
       "svg": "icons/tme-team-icon/tme-team-icon.svg",
-      "png512": "icons/tme-team-icon/tme-team-icon-512.png"
+      "png": "icons/tme-team-icon/tme-team-icon-512.png"
     },
     {
       "name": "Tree Mountains",
       "slug": "tree-mountains",
       "svg": "icons/tree-mountains/tree-mountains.svg",
-      "png512": "icons/tree-mountains/tree-mountains-512.png"
+      "png": "icons/tree-mountains/tree-mountains-512.png"
     },
     {
       "name": "Video Calling",
       "slug": "video-calling",
       "svg": "icons/video-calling/video-calling.svg",
-      "png512": "icons/video-calling/video-calling-512.png"
+      "png": "icons/video-calling/video-calling-512.png"
     },
     {
       "name": "VoiceLift Off",
       "slug": "voicelift-off",
       "svg": "icons/voicelift-off/voicelift-off.svg",
-      "png512": "icons/voicelift-off/voicelift-off-512.png"
+      "png": "icons/voicelift-off/voicelift-off-512.png"
     },
     {
       "name": "VoiceLift On",
       "slug": "voicelift-on",
       "svg": "icons/voicelift-on/voicelift-on.svg",
-      "png512": "icons/voicelift-on/voicelift-on-512.png"
+      "png": "icons/voicelift-on/voicelift-on-512.png"
     },
     {
       "name": "Winter Snowflake",
       "slug": "winter-snowflake",
       "svg": "icons/winter-snowflake/winter-snowflake.svg",
-      "png512": "icons/winter-snowflake/winter-snowflake-512.png"
+      "png": "icons/winter-snowflake/winter-snowflake-512.png"
     }
   ]
 }
