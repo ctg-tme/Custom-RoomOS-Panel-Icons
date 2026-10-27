@@ -40,16 +40,28 @@ function makeElement(tag, className, text) {
 
 function getGitHubRepository() {
   const host = window.location.hostname;
-  const pathParts = window.location.pathname.split("/").filter(Boolean);
+  const pathParts = siteBase.pathname.split("/").filter(Boolean);
   if (!host.endsWith(".github.io")) return null;
 
   const owner = host.slice(0, -".github.io".length);
   const isUserSite = pathParts.length === 0 || pathParts[0].toLowerCase() === `${owner.toLowerCase()}.github.io`;
   const repository = isUserSite ? `${owner}.github.io` : pathParts[0];
   return {
-    manifestUrl: new URL("manifest.json", siteBase).href,
+    url: `https://github.com/${owner}/${repository}`,
+    siteUrl: siteBase.href,
+    fileBase: `https://github.com/${owner}/${repository}/blob/main/`,
     rawBase: `https://raw.githubusercontent.com/${owner}/${repository}/main/`,
   };
+}
+
+const repository = getGitHubRepository();
+if (repository) {
+  for (const link of document.querySelectorAll("[data-repository-link]")) {
+    link.href = repository.url;
+  }
+  for (const link of document.querySelectorAll("[data-repository-file]")) {
+    link.href = `${repository.fileBase}${link.dataset.repositoryFile}`;
+  }
 }
 
 function renderCurlExamples(rawBase) {
@@ -170,10 +182,9 @@ Promise.all([
   }),
 ])
   .then(([source]) => {
-    const repository = getGitHubRepository();
-    const manifestUrl = repository?.manifestUrl ?? "https://ctg-tme.github.io/Custom-RoomOS-Panel-Icons/manifest.json";
+    const siteUrl = repository?.siteUrl ?? "https://ctg-tme.github.io/Custom-RoomOS-Panel-Icons/";
     const rawBase = repository?.rawBase ?? "https://raw.githubusercontent.com/ctg-tme/Custom-RoomOS-Panel-Icons/main/";
-    macroSource = source.replace("https://ctg-tme.github.io/Custom-RoomOS-Panel-Icons/manifest.json", manifestUrl);
+    macroSource = source.replace("https://ctg-tme.github.io/Custom-RoomOS-Panel-Icons/", siteUrl);
     renderMacroSource(macroSource);
     renderCurlExamples(rawBase);
     copyMacro.disabled = false;

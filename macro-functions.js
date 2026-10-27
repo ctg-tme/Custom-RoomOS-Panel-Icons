@@ -1,13 +1,10 @@
 // Copy this namespace into a RoomOS macro project.
 const tmeRoomOSCustomIcons = (() => {
-  let manifestDirectory = '';
+  const repositoryUrl = 'https://ctg-tme.github.io/Custom-RoomOS-Panel-Icons/';
 
   async function list() {
-    const manifestUrl = 'https://ctg-tme.github.io/Custom-RoomOS-Panel-Icons/manifest.json';
-    manifestDirectory = manifestUrl.slice(0, manifestUrl.lastIndexOf('/') + 1);
-
     const response = await xapi.Command.HttpClient.Get({
-      Url: manifestUrl,
+      Url: `${repositoryUrl}manifest.json`,
       ResultBody: 'PlainText',
     });
     const statusCode = Number(response.StatusCode);
@@ -39,7 +36,7 @@ const tmeRoomOSCustomIcons = (() => {
       throw new Error(`Icon not found in manifest: ${iconName}`);
     }
 
-    const iconUrl = `${manifestDirectory}${icon.svg}`;
+    const iconUrl = `${repositoryUrl}${icon.svg}`;
     const download = await xapi.Command.UserInterface.Extensions.Icon.Download({ Url: iconUrl });
     const iconId = download.IconId;
     if (!iconId) {
