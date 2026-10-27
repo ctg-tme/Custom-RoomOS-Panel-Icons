@@ -13,7 +13,7 @@ The included [Pages workflow](.github/workflows/pages.yml) deploys the site when
 
 ## Fetch icons
 
-Load `manifest.json` from the GitHub Pages site and find the icon by its name or dashed slug. Use its `svg` or `png` path to request the asset from the same site. The gallery's “Fetch an icon” section includes shell `curl` examples and RoomOS macro helpers for fetching the manifest and applying an icon to a panel. The helpers are also available in [`macro-functions.js`](macro-functions.js); the published site base URL is embedded in `tmeRoomOSCustomIcons` and each function appends the path it needs. If you fork the repository, replace that base URL with your own Pages site URL. RoomOS's HTTP client must be enabled and permitted to reach the site.
+Load `manifest.json` from the GitHub Pages site and find the icon by its name or dashed slug. Use its `svg` or `png` path to request the asset from the same site for non-macro workflows. The RoomOS macro upload helper always downloads the icon's `png` asset, since RoomOS cannot use SVGs in this workflow. The gallery's “Fetch an icon” section includes shell `curl` examples and RoomOS macro helpers for fetching the manifest and applying an icon to a panel. The helpers are also available in [`macro-functions.js`](macro-functions.js); the published site base URL is embedded in `tmeRoomOSCustomIcons` and each function appends the path it needs. If you fork the repository, replace that base URL with your own Pages site URL. RoomOS's HTTP client must be enabled and permitted to reach the site.
 
 ## License and copyright
 

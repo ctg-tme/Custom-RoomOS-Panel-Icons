@@ -36,7 +36,7 @@ const tmeRoomOSCustomIcons = (() => {
       throw new Error(`Icon not found in manifest: ${iconName}`);
     }
 
-    const iconUrl = `${repositoryUrl}${icon.svg}`;
+    const iconUrl = `${repositoryUrl}${icon.png}`;
     const download = await xapi.Command.UserInterface.Extensions.Icon.Download({ Url: iconUrl });
     const iconId = download.IconId;
     if (!iconId) {
