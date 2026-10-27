@@ -8,6 +8,12 @@ const macroCode = document.querySelector("#macro-code");
 const curlExamples = document.querySelector("#curl-examples");
 const copyMacro = document.querySelector("#copy-macro");
 const copyStatus = document.querySelector("#copy-status");
+const iconDialog = document.querySelector("#icon-dialog");
+const dialogTitle = document.querySelector("#icon-dialog-title");
+const dialogImage = document.querySelector("#icon-dialog-image");
+const dialogSlug = document.querySelector("#icon-dialog-slug");
+const dialogFolderLink = document.querySelector("#icon-dialog-folder");
+const folderLinkIcon = document.querySelector("#folder-link-icon");
 const systemTheme = window.matchMedia("(prefers-color-scheme: dark)");
 const siteBase = new URL("./", window.location.href);
 let icons = [];
@@ -122,6 +128,29 @@ function renderMacroSource(source) {
   if (lastIndex < source.length) macroCode.append(document.createTextNode(source.slice(lastIndex)));
 }
 
+function getIconFolderUrl(icon) {
+  const repositoryUrl = repository?.url ?? "https://github.com/ctg-tme/Custom-RoomOS-Panel-Icons";
+  return new URL("./", new URL(icon.svg, `${repositoryUrl}/tree/main/`)).href;
+}
+
+function openIconPreview(icon) {
+  dialogTitle.textContent = icon.name;
+  dialogImage.src = new URL(icon.svg, siteBase).href;
+  dialogImage.alt = `${icon.name} icon`;
+  dialogSlug.textContent = icon.slug;
+  dialogFolderLink.href = getIconFolderUrl(icon);
+  dialogFolderLink.setAttribute("aria-label", `View ${icon.name} files on GitHub (opens in a new tab)`);
+  iconDialog.showModal();
+}
+
+iconDialog.addEventListener("click", (event) => {
+  if (event.target !== iconDialog) return;
+  const bounds = iconDialog.getBoundingClientRect();
+  if (event.clientX < bounds.left || event.clientX > bounds.right || event.clientY < bounds.top || event.clientY > bounds.bottom) {
+    iconDialog.close();
+  }
+});
+
 function render() {
   const query = search.value.trim().toLowerCase();
   const filtered = icons.filter((icon) => `${icon.name} ${icon.slug}`.toLowerCase().includes(query));
@@ -132,15 +161,29 @@ function render() {
   }
   for (const icon of filtered) {
     const card = makeElement("article", "icon-card");
-    const preview = makeElement("div", "icon-preview");
+    const preview = makeElement("button", "icon-preview");
+    preview.type = "button";
+    preview.setAttribute("aria-label", `Preview ${icon.name}`);
+    preview.setAttribute("aria-haspopup", "dialog");
+    preview.setAttribute("aria-controls", "icon-dialog");
+    preview.addEventListener("click", () => openIconPreview(icon));
     const image = makeElement("img");
-    image.src = new URL(icon.png, siteBase).href;
+    image.src = new URL(icon.svg, siteBase).href;
     image.alt = `${icon.name} icon`;
     image.loading = "lazy";
     preview.append(image);
     const content = makeElement("div", "icon-content");
-    content.append(makeElement("h3", "", icon.name));
-    content.append(makeElement("code", "icon-slug", icon.slug));
+    const caption = makeElement("div", "icon-caption");
+    caption.append(makeElement("h3", "", icon.name));
+    caption.append(makeElement("code", "icon-slug", icon.slug));
+    const folderLink = makeElement("a", "icon-button icon-folder-link");
+    folderLink.href = getIconFolderUrl(icon);
+    folderLink.target = "_blank";
+    folderLink.rel = "noopener noreferrer";
+    folderLink.title = `View ${icon.name} files on GitHub (opens in a new tab)`;
+    folderLink.setAttribute("aria-label", folderLink.title);
+    folderLink.append(folderLinkIcon.content.cloneNode(true));
+    content.append(caption, folderLink);
     card.append(preview, content);
     iconGrid.append(card);
   }
