@@ -110,6 +110,12 @@
       "png": "icons/routing/routing-512.png"
     },
     {
+      "name": "Speaker Config",
+      "slug": "speaker-config",
+      "svg": "icons/speaker-config/speaker-config.svg",
+      "png": "icons/speaker-config/speaker-config-512.png"
+    },
+    {
       "name": "Stack",
       "slug": "stack",
       "svg": "icons/stack/stack.svg",
