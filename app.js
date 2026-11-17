@@ -12,12 +12,16 @@ const iconDialog = document.querySelector("#icon-dialog");
 const dialogTitle = document.querySelector("#icon-dialog-title");
 const dialogImage = document.querySelector("#icon-dialog-image");
 const dialogSlug = document.querySelector("#icon-dialog-slug");
+const dialogDownload = document.querySelector("#icon-dialog-download");
 const dialogFolderLink = document.querySelector("#icon-dialog-folder");
+const paddingBase = document.querySelector("#padding-base");
+const paddingNoPad = document.querySelector("#padding-no-pad");
 const folderLinkIcon = document.querySelector("#folder-link-icon");
 const systemTheme = window.matchMedia("(prefers-color-scheme: dark)");
 const siteBase = new URL("./", window.location.href);
 let icons = [];
 let macroSource = "";
+let previewIcon = null;
 
 function setTheme(choice) {
   const resolved = choice === "system" ? (systemTheme.matches ? "dark" : "light") : choice;
@@ -134,14 +138,29 @@ function getIconFolderUrl(icon) {
 }
 
 function openIconPreview(icon) {
+  previewIcon = icon;
   dialogTitle.textContent = icon.name;
-  dialogImage.src = new URL(icon.svg, siteBase).href;
-  dialogImage.alt = `${icon.name} icon`;
   dialogSlug.textContent = icon.slug;
   dialogFolderLink.href = getIconFolderUrl(icon);
   dialogFolderLink.setAttribute("aria-label", `View ${icon.name} files on GitHub (opens in a new tab)`);
+  setPreviewPadding(true);
   iconDialog.showModal();
 }
+
+function setPreviewPadding(hasPadding) {
+  if (!previewIcon) return;
+  const svgPath = hasPadding ? previewIcon.svg : (previewIcon.noPad_svg || previewIcon.svg);
+  const pngPath = hasPadding ? (previewIcon.base_png || previewIcon.png) : (previewIcon.noPad_png || previewIcon.png);
+  dialogImage.src = new URL(svgPath, siteBase).href;
+  dialogImage.alt = `${previewIcon.name} icon with ${hasPadding ? "standard" : "reduced"} padding`;
+  dialogDownload.href = new URL(pngPath, siteBase).href;
+  dialogDownload.textContent = `Download PNG · ${hasPadding ? "standard padding" : "reduced padding"}`;
+  paddingBase.setAttribute("aria-pressed", String(hasPadding));
+  paddingNoPad.setAttribute("aria-pressed", String(!hasPadding));
+}
+
+paddingBase.addEventListener("click", () => setPreviewPadding(true));
+paddingNoPad.addEventListener("click", () => setPreviewPadding(false));
 
 iconDialog.addEventListener("click", (event) => {
   if (event.target !== iconDialog) return;

@@ -52,7 +52,7 @@
           </label>
         </div>
         <p id="gallery-status" class="status" role="status" aria-live="polite">Loading manifest…</p>
-        <p class="gallery-help">Click an icon for a larger preview. Use its link symbol to open the icon’s files on GitHub.</p>
+        <p class="gallery-help">Click an icon to preview standard or reduced padding. Use its link symbol to open the source files on GitHub.</p>
         <div id="icon-grid" class="icon-grid"></div>
       </section>
 
@@ -60,7 +60,7 @@
         <div class="guide-intro">
           <p class="eyebrow">Using the collection</p>
           <h2 id="fetch-title">Fetch an icon</h2>
-          <p>Load <a href="https://github.com/ctg-tme/Custom-RoomOS-Panel-Icons/blob/main/manifest.json" data-repository-file="manifest.json" target="_blank" rel="noopener noreferrer" aria-label="manifest.json on GitHub (opens in a new tab)">manifest.json</a> from this site, find the icon by its name or slug, then use its <code>svg</code> or <code>png</code> path to fetch that asset from the same site. The manifest is the source of truth for icon names and file locations.</p>
+          <p>Load <a href="https://github.com/ctg-tme/Custom-RoomOS-Panel-Icons/blob/main/manifest.json" data-repository-file="manifest.json" target="_blank" rel="noopener noreferrer" aria-label="manifest.json on GitHub (opens in a new tab)">manifest.json</a> from this site, find the icon by its name or slug, then use its <code>base_png</code> or <code>noPad_png</code> path to fetch the matching PNG. Standard padding is a good starting point for larger home-screen icons; reduced padding can help the artwork read larger in smaller Control Panel slots. Either type can be used in either location, so check the endpoint result. The manifest is the source of truth for icon names and file locations.</p>
         </div>
         <div class="guide-columns">
           <div class="http-panel">
@@ -72,11 +72,12 @@
             <div class="macro-heading">
               <div>
                 <h3>RoomOS macro helpers</h3>
-                <p>Copy the namespaced helpers into a RoomOS macro project. The upload helper downloads the icon’s PNG for RoomOS. Use <code>await tmeRoomOSCustomIcons.list()</code> to return the manifest or <code>await tmeRoomOSCustomIcons.upload('camera-off', 'your-panel-id')</code> to apply an icon. The device HTTP client must be enabled and permitted to reach the site.</p>
+                <p>Copy the namespaced helpers into a RoomOS macro project. Call <code>install()</code> during macro boot for each icon and padding choice you will use; it downloads the PNG once and keeps the returned RoomOS icon ID in macro memory. Then call <code>update()</code> whenever a panel needs that icon; it reuses the ID without downloading again. The <code>installedIcons</code> object tracks IDs by slug and padding choice, and <code>findInstalled(name, { padding })</code> looks them up by slug or display name. Use standard padding for larger home-screen icons as a starting point and reduced padding for smaller Control Panel slots when the artwork needs to read larger. Either choice can serve either location. The legacy <code>upload()</code> helper still installs and applies an icon in one call. Install again after a macro restart. The device HTTP client must be enabled and permitted to reach the site.</p>
               </div>
               <button id="copy-macro" class="copy-button" type="button" disabled>Copy macro code</button>
             </div>
             <pre class="macro-code"><code id="macro-code">Loading macro functions…</code></pre>
+            <p class="macro-example"><code>await tmeRoomOSCustomIcons.install('camera-off');</code><br /><code>await tmeRoomOSCustomIcons.install('camera-off', { padding: false });</code><br /><code>await tmeRoomOSCustomIcons.update('camera-off', 'your-panel-id');</code><br /><code>await tmeRoomOSCustomIcons.update('camera-off', 'your-panel-id', { padding: false });</code></p>
             <p id="copy-status" class="copy-status" role="status" aria-live="polite"></p>
           </div>
         </div>
@@ -99,8 +100,14 @@
         </form>
       </div>
       <div class="icon-preview-stage"><img id="icon-dialog-image" alt="" /></div>
+      <div class="padding-options" role="group" aria-label="Artwork padding">
+        <button id="padding-base" type="button" aria-pressed="true">Standard padding</button>
+        <button id="padding-no-pad" type="button" aria-pressed="false">Reduced padding</button>
+      </div>
+      <p class="padding-note">Reduced padding brings the artwork closer to the canvas edge while preserving the 5% safe area.</p>
       <div class="icon-dialog-footer">
         <code id="icon-dialog-slug" class="icon-slug"></code>
+        <a id="icon-dialog-download" class="text-link" download>Download PNG</a>
         <a id="icon-dialog-folder" class="text-link" target="_blank" rel="noopener noreferrer">View files on GitHub <span aria-hidden="true">↗</span></a>
       </div>
     </dialog>
