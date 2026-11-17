@@ -173,6 +173,24 @@
       "noPad_svg": "icons/speaker-config/speaker-config-noPad.svg"
     },
     {
+      "name": "Speaker Off",
+      "slug": "speaker-off",
+      "svg": "icons/speaker-off/speaker-off.svg",
+      "png": "icons/speaker-off/speaker-off-512.png",
+      "base_png": "icons/speaker-off/speaker-off-512.png",
+      "noPad_png": "icons/speaker-off/speaker-off-noPad-512.png",
+      "noPad_svg": "icons/speaker-off/speaker-off-noPad.svg"
+    },
+    {
+      "name": "Speaker On",
+      "slug": "speaker-on",
+      "svg": "icons/speaker-on/speaker-on.svg",
+      "png": "icons/speaker-on/speaker-on-512.png",
+      "base_png": "icons/speaker-on/speaker-on-512.png",
+      "noPad_png": "icons/speaker-on/speaker-on-noPad-512.png",
+      "noPad_svg": "icons/speaker-on/speaker-on-noPad.svg"
+    },
+    {
       "name": "Stack",
       "slug": "stack",
       "svg": "icons/stack/stack.svg",
@@ -207,24 +225,6 @@
       "base_png": "icons/video-calling/video-calling-512.png",
       "noPad_png": "icons/video-calling/video-calling-noPad-512.png",
       "noPad_svg": "icons/video-calling/video-calling-noPad.svg"
-    },
-    {
-      "name": "VoiceLift Off",
-      "slug": "voicelift-off",
-      "svg": "icons/voicelift-off/voicelift-off.svg",
-      "png": "icons/voicelift-off/voicelift-off-512.png",
-      "base_png": "icons/voicelift-off/voicelift-off-512.png",
-      "noPad_png": "icons/voicelift-off/voicelift-off-noPad-512.png",
-      "noPad_svg": "icons/voicelift-off/voicelift-off-noPad.svg"
-    },
-    {
-      "name": "VoiceLift On",
-      "slug": "voicelift-on",
-      "svg": "icons/voicelift-on/voicelift-on.svg",
-      "png": "icons/voicelift-on/voicelift-on-512.png",
-      "base_png": "icons/voicelift-on/voicelift-on-512.png",
-      "noPad_png": "icons/voicelift-on/voicelift-on-noPad-512.png",
-      "noPad_svg": "icons/voicelift-on/voicelift-on-noPad.svg"
     },
     {
       "name": "Winter Snowflake",

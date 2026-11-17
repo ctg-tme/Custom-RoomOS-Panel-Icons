@@ -1,8 +1,13 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512" role="img" aria-labelledby="title description">
-<title id="title">Voice Lift Off</title><desc id="description">A side-profile ceiling speaker above a slim listener silhouette, with no emitted sound waves.</desc>
+<title id="title">Speaker On</title><desc id="description">A side-profile ceiling speaker emits sound toward a slim listener silhouette.</desc>
 <g fill="#fff">
 <g id="speaker-body"><path d="M164 52H348C362 52 370 64 374 76C381 96 394 108 413 112Q418 114 415 118Q413 121 406 121H106Q99 121 97 118Q95 114 99 112C118 108 131 96 138 76C142 64 150 52 164 52Z"/></g>
 <g id="speaker-lip"><path d="M77 143Q88 139 100 140H412Q424 139 435 143Q440 146 436 151Q432 155 423 157L415 159H97L89 157Q80 155 76 151Q73 146 77 143Z"/></g>
 
+
+<g id="sound-waves">
+<path d="M211 205C237 220 275 220 301 205Q308 201 313 207Q318 214 311 219C278 240 234 240 201 219Q194 214 199 207Q204 201 211 205Z"/>
+<path d="M181 244C224 270 288 270 331 244Q338 240 343 247Q348 254 341 259C290 290 222 290 171 259Q164 254 169 247Q174 240 181 244Z"/>
+</g>
 <g id="listener"><circle cx="256" cy="342" r="34"/><path d="M166 468V445C166 416 202 397 230 397H282C310 397 346 416 346 445V468Q346 478 336 478H176Q166 478 166 468Z"/></g>
 </g></svg>
