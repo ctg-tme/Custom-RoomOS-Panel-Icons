@@ -227,6 +227,15 @@
       "noPad_svg": "icons/video-calling/video-calling-noPad.svg"
     },
     {
+      "name": "Web Application",
+      "slug": "web-app",
+      "svg": "icons/web-app/web-app.svg",
+      "png": "icons/web-app/web-app.png",
+      "base_png": "icons/web-app/web-app.png",
+      "noPad_png": "icons/web-app/web-app-noPad.png",
+      "noPad_svg": "icons/web-app/web-app-noPad.svg"
+    },
+    {
       "name": "Winter Snowflake",
       "slug": "winter-snowflake",
       "svg": "icons/winter-snowflake/winter-snowflake.svg",
