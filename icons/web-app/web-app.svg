@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512">
   <title>Web Application</title>
-  <desc>A browser window containing a list of web pages.</desc>
+  <desc>A browser window with one prominent globe representing the web.</desc>
   <defs>
     <mask id="browser-cutouts" maskUnits="userSpaceOnUse" x="48" y="64" width="416" height="384">
       <rect x="48" y="64" width="416" height="384" rx="44" fill="#fff"/>
@@ -10,27 +10,11 @@
       <circle cx="164" cy="105" r="9" fill="#000"/>
       <rect x="205" y="92" width="226" height="26" rx="13" fill="#000"/>
     </mask>
-    <mask id="row-one-cutouts" maskUnits="userSpaceOnUse" x="102" y="172" width="308" height="62">
-      <rect x="102" y="172" width="308" height="62" rx="14" fill="#fff"/>
-      <rect x="116" y="183" width="40" height="40" rx="9" fill="#000"/>
-      <rect x="176" y="187" width="202" height="13" rx="6.5" fill="#000"/>
-      <rect x="176" y="209" width="148" height="10" rx="5" fill="#000"/>
-    </mask>
-    <mask id="row-two-cutouts" maskUnits="userSpaceOnUse" x="102" y="260" width="308" height="62">
-      <rect x="102" y="260" width="308" height="62" rx="14" fill="#fff"/>
-      <rect x="116" y="271" width="40" height="40" rx="9" fill="#000"/>
-      <rect x="176" y="275" width="202" height="13" rx="6.5" fill="#000"/>
-      <rect x="176" y="297" width="148" height="10" rx="5" fill="#000"/>
-    </mask>
-    <mask id="row-three-cutouts" maskUnits="userSpaceOnUse" x="102" y="348" width="308" height="50">
-      <rect x="102" y="348" width="308" height="50" rx="14" fill="#fff"/>
-      <rect x="116" y="358" width="30" height="30" rx="7" fill="#000"/>
-      <rect x="164" y="360" width="214" height="12" rx="6" fill="#000"/>
-      <rect x="164" y="381" width="150" height="9" rx="4.5" fill="#000"/>
-    </mask>
   </defs>
   <rect x="48" y="64" width="416" height="384" rx="44" fill="#fff" mask="url(#browser-cutouts)"/>
-  <rect x="102" y="172" width="308" height="62" rx="14" fill="#fff" mask="url(#row-one-cutouts)"/>
-  <rect x="102" y="260" width="308" height="62" rx="14" fill="#fff" mask="url(#row-two-cutouts)"/>
-  <rect x="102" y="348" width="308" height="50" rx="14" fill="#fff" mask="url(#row-three-cutouts)"/>
+  <g fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="256" cy="283" r="96" stroke-width="12"/>
+    <ellipse cx="256" cy="283" rx="43" ry="96" stroke-width="10"/>
+    <path d="M160 283 Q256 311 352 283" stroke-width="10"/>
+  </g>
 </svg>
