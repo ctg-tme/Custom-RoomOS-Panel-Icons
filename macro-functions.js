@@ -4,10 +4,16 @@ const tmeRoomOSCustomIcons = (() => {
   const installedIcons = Object.create(null);
 
   async function list() {
-    const response = await xapi.Command.HttpClient.Get({
-      Url: `${repositoryUrl}manifest.json`,
-      ResultBody: 'PlainText',
-    });
+    let response;
+    try {
+      response = await xapi.Command.HttpClient.Get({
+        Url: `${repositoryUrl}manifest.json`,
+        ResultBody: 'PlainText',
+      });
+    } catch (error) {
+      throw error;
+    }
+
     const statusCode = Number(response.StatusCode);
     if (statusCode < 200 || statusCode >= 300) {
       throw new Error(`Manifest request failed with HTTP ${response.StatusCode}`);
